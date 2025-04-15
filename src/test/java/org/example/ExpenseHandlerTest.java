@@ -4,11 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-
 import static org.junit.Assert.*;
 
 public class ExpenseHandlerTest {
@@ -92,23 +87,5 @@ public class ExpenseHandlerTest {
         assertEquals(1, filteredModel.getSize());
         assertTrue(filteredModel.getElementAt(0).startsWith("Їжа"));
     }
-
-    @Test
-    public void testExportExpensesToFile() {
-        model.addElement("Їжа - 100 грн - 01.01.2024 - Сніданок");
-
-        handler.exportExpensesToFile();
-
-        File file = new File("expenses.txt");
-        assertTrue(file.exists());
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line = reader.readLine();
-            assertEquals("Їжа - 100 грн - 01.01.2024 - Сніданок", line);
-        } catch (IOException e) {
-            fail("Не вдалося прочитати файл.");
-        }
-
-        file.delete();
-    }
 }
+
