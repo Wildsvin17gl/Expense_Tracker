@@ -102,7 +102,6 @@ public class ExpenseHandlerTest {
         File file = new File("expenses.txt");
         assertTrue(file.exists());
 
-        // Optional: check file content
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine();
             assertEquals("Їжа - 100 грн - 01.01.2024 - Сніданок", line);
